@@ -1,0 +1,71 @@
+{
+  "name": "@sms/cli",
+  "version": "0.0.0",
+  "author": "EqualMa @EqualMa",
+  "bin": {
+    "sms": "./bin/run"
+  },
+  "bugs": "https://github.com/EqualMa/setup-my-site/issues",
+  "dependencies": {
+    "@oclif/command": "^1",
+    "@oclif/config": "^1",
+    "@oclif/plugin-help": "^2",
+    "@typescript-eslint/eslint-plugin": "^2.6.1",
+    "@typescript-eslint/parser": "^2.6.1",
+    "eslint": "^6.6.0",
+    "eslint-config-prettier": "^6.5.0",
+    "eslint-plugin-prettier": "^3.1.1",
+    "tslib": "^1"
+  },
+  "devDependencies": {
+    "@oclif/dev-cli": "^1",
+    "@oclif/test": "^1",
+    "@types/chai": "^4",
+    "@types/mocha": "^5",
+    "@types/node": "^10",
+    "chai": "^4",
+    "globby": "^10",
+    "mocha": "^5",
+    "nyc": "^14",
+    "rimraf": "^3.0.0",
+    "ts-node": "^8",
+    "typescript": "^3.3"
+  },
+  "engines": {
+    "node": ">=8.0.0"
+  },
+  "files": [
+    "/bin",
+    "/lib",
+    "/npm-shrinkwrap.json",
+    "/oclif.manifest.json"
+  ],
+  "homepage": "https://github.com/EqualMa/setup-my-site",
+  "keywords": [
+    "oclif"
+  ],
+  "license": "MIT",
+  "main": "lib/index.js",
+  "oclif": {
+    "commands": "./lib/commands",
+    "bin": "sms",
+    "plugins": [
+      "@oclif/plugin-help"
+    ]
+  },
+  "repository": "EqualMa/setup-my-site",
+  "scripts": {
+    "precommit": "lint-staged",
+    "postpack": "rimraf oclif.manifest.json",
+    "prepack": "rimraf lib && tsc -b && oclif-dev manifest && oclif-dev readme",
+    "test": "nyc --extension .ts mocha --forbid-only \"test/**/*.test.ts\"",
+    "version": "oclif-dev readme && git add README.md",
+    "lint": "eslint --ext .js,.jsx,.ts,.tsx",
+    "lint:fix": "eslint --ext .js,.jsx,.ts,.tsx --fix",
+    "lint-all": "yarn run lint .",
+    "lint-all:fix": "yarn run lint:fix .",
+    "typecheck": "tsc --noEmit",
+    "format": "prettier --write"
+  },
+  "types": "lib/index.d.ts"
+}
