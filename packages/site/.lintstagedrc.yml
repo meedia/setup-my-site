@@ -1,0 +1,6 @@
+".eslintrc.js":
+  - "yarn run format"
+  - "git add"
+"!(.eslintrc).{js,jsx,ts,tsx}":
+  - "yarn run lint"
+  - git add
